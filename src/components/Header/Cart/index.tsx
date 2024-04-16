@@ -1,5 +1,5 @@
 import { CartContainer } from "./styles";
-import CartIcon from "../../assets/CartIcon.svg";
+import CartIcon from "../../../assets/CartIcon.svg";
 import Image from "next/image";
 
 export function Cart() {

@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const HeaderContent = styled.header`
   width: 100%;
-  margin: auto;
   background-color: var(--blue);
 `;
 export const Container = styled.div`
