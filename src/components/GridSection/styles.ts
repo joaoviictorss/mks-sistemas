@@ -5,7 +5,7 @@ export const Container = styled.main`
   max-width: 1000px;
   align-self: center;
   @media (max-width: 920px) {
-    padding-top: 2rem;
+    padding: 2rem 0;
   }
 `;
 
