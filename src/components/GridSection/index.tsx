@@ -1,4 +1,5 @@
 import { ProductItem } from "../ProductItem";
+import { ProductItemSkeleton } from "../ProductItem/ProductItemSkeleton.tsx";
 import { Container, ProductGrid } from "./styles";
 
 import { useState, useEffect } from "react";
@@ -35,9 +36,13 @@ export function GridSection() {
   return (
     <Container>
       <ProductGrid>
-        {dataRes?.map((product) => (
-          <ProductItem data={product} key={product.id} />
-        ))}
+        {dataRes
+          ? dataRes.map((product) => (
+              <ProductItem data={product} key={product.id} />
+            ))
+          : Array.from({ length: 8 }).map((_, i) => (
+              <ProductItemSkeleton key={i} />
+            ))}
       </ProductGrid>
     </Container>
   );

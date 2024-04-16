@@ -13,6 +13,7 @@ type Product = {
 
 interface ProductItemProps {
   data: Product;
+  loading?: string;
 }
 
 export function ProductItem({ data }: ProductItemProps) {
@@ -26,7 +27,7 @@ export function ProductItem({ data }: ProductItemProps) {
             {new Intl.NumberFormat("pt-BR", {
               style: "currency",
               currency: "BRL",
-              minimumFractionDigits: 0
+              minimumFractionDigits: 0,
             }).format(data.price)}
           </div>
         </div>

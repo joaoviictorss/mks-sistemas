@@ -8,7 +8,37 @@ export const Container = styled.div`
   border-radius: 0.5rem;
   max-width: 220px;
   box-shadow: 0px 2px 8px 0px #00000022;
- 
+
+  @keyframes skeleton-loading {
+    0% {
+      background-color: hsl(200, 20%, 70%);
+    }
+
+    100% {
+      background-color: hsl(200, 20%, 95%);
+    }
+  }
+  .img-skeleton {
+    height: 130px;
+    width: 190px;
+    margin: 0.25rem;
+  }
+  .skeleton {
+    opacity: 0.7;
+    animation: skeleton-loading 1s linear infinite alternate;
+    background-color: #373737;
+  }
+  .skeleton-text {
+    width: 100%;
+    height: 0.5rem;
+    margin-bottom: 0.25rem;
+    border-radius: 8px;
+  }
+
+  .skeleton-text:last-child {
+    margin-bottom: 0;
+    width: 80%;
+  }
 `;
 
 export const ProductInfos = styled.div`
@@ -20,7 +50,7 @@ export const ProductInfos = styled.div`
   padding: 1rem;
 
   img {
-    width: 60%;
+    width: 7.5rem;
     margin-bottom: 0.5rem;
   }
 
