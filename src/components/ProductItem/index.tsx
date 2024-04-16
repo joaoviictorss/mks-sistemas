@@ -1,22 +1,41 @@
 import Image from "next/image";
 import ShoppingIcon from "../../assets/shoppingIcon.svg";
 import { ButtonBuyItem, Container, ProductInfos } from "./styles";
-
-type Product = {
-  id: number;
-  name: string;
-  brand: string;
-  description: string;
-  price: number;
-  photo: string;
-};
+import { Product } from "@/types/product";
 
 interface ProductItemProps {
   data: Product;
-  loading?: string;
 }
 
 export function ProductItem({ data }: ProductItemProps) {
+  const handleAddToCart = () => {
+    let cartItems = localStorage.getItem("cart-items");
+    if (cartItems) {
+      let cartItemsArray = JSON.parse(cartItems);
+
+      let existingProductIndex = cartItemsArray.findIndex(
+        (item: { id: number }) => item.id === data.id
+      );
+
+      if (existingProductIndex != -1) {
+        cartItemsArray[existingProductIndex].quantity += 1;
+      } else {
+        cartItemsArray.push({ ...data, id: data.id, quantity: 1 });
+      }
+
+      localStorage.setItem("cart-items", JSON.stringify(cartItemsArray));
+    } else {
+      const newCart = [
+        {
+          ...data,
+          id: data.id,
+          quantity: 1,
+        },
+      ];
+      localStorage.setItem("cart-items", JSON.stringify(newCart));
+    }
+  };
+
   return (
     <Container>
       <ProductInfos>
@@ -33,7 +52,7 @@ export function ProductItem({ data }: ProductItemProps) {
         </div>
         <p>{data.description}</p>
       </ProductInfos>
-      <ButtonBuyItem>
+      <ButtonBuyItem onClick={handleAddToCart}>
         <Image src={ShoppingIcon} alt="ShoppingIcon" />
         Comprar
       </ButtonBuyItem>

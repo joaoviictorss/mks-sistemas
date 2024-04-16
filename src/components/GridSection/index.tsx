@@ -3,15 +3,8 @@ import { ProductItemSkeleton } from "../ProductItem/ProductItemSkeleton.tsx";
 import { Container, ProductGrid } from "./styles";
 
 import { useState, useEffect } from "react";
+import { Product } from "@/types/product";
 
-type Product = {
-  id: number;
-  name: string;
-  brand: string;
-  description: string;
-  price: number;
-  photo: string;
-};
 
 export function GridSection() {
   const [dataRes, setDataRes] = useState<Product[]>();
