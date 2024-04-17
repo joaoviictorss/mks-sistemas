@@ -44,7 +44,7 @@ export function CartItem({
 
           <div className="prince-and-quantity">
 
-            // add or remove quantity of item
+            {/* add or remove quantity of item */}
             <QuantityInput>
               <button
                 onClick={() => setProductQuantity((quantity) => quantity - 1)}

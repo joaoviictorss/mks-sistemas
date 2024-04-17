@@ -22,6 +22,7 @@ export const ContainerProduct = styled.div`
     height: 130px;
     width: 190px;
     margin: 0.25rem;
+
   }
   .skeleton {
     opacity: 0.7;
