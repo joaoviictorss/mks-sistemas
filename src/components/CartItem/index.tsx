@@ -7,8 +7,11 @@ import {
   ProductInfos,
   QuantityInput,
 } from "./styles";
+
 import CloseCartIcon from "../../assets/CloseCartIcon.svg";
+
 import { ProductInCart } from "@/types/product";
+
 import { useEffect, useState } from "react";
 
 interface CartItemProps {
@@ -40,6 +43,8 @@ export function CartItem({
           <p>{dataProduct.name}</p>
 
           <div className="prince-and-quantity">
+
+            // add or remove quantity of item
             <QuantityInput>
               <button
                 onClick={() => setProductQuantity((quantity) => quantity - 1)}

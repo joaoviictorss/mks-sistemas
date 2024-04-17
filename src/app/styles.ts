@@ -8,6 +8,7 @@ export const Header = styled.header`
   top: 0;
   width: 100%;
 `;
+
 export const Container = styled.div`
   height: 100px;
   display: flex;
@@ -30,23 +31,23 @@ export const FirstNameLogo = styled.span`
   font-weight: 600;
   font-size: 2.5rem;
 `;
+
 export const SecondNameLogo = styled.span`
   margin-bottom: -10px;
   font-weight: 300;
   font-size: 1.25rem;
 `;
 
-export const GridContainer = styled.main`
-  height: calc(100% - 100px);
+export const GridContainer = styled.main<{ $menuOpen?: boolean }>`
+  height: ${(props) => (props.$menuOpen ? "100vh" : "auto")};
+  overflow: ${(props) => (props.$menuOpen ? "hidden" : "")};
   margin: auto;
   max-width: 1000px;
   display: flex;
   align-items: center;
   justify-content: center;
-
   @media (max-width: 920px) {
     padding: 2rem 0;
-    
   }
 `;
 
@@ -58,11 +59,10 @@ export const ProductGrid = styled.div`
   @media (max-width: 920px) {
     margin-top: 100px;
     grid-template-columns: repeat(3, 1fr);
-    
   }
 
   @media (max-width: 780px) {
-    margin-top: 300px;
+    margin-top: 70px;
     grid-template-columns: repeat(2, 1fr);
   }
 

@@ -1,6 +1,9 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+//hooks
+import { useEffect, useState } from "react";
+
+//components
 import { Footer } from "@/components/Footer";
 import {
   Container,
@@ -15,25 +18,31 @@ import {
 import { ProductItem } from "@/components/ProductItem";
 import { CartSection } from "@/components/CartSection";
 
+//images
 import CartIcon from "../assets/CartIcon.svg";
+
+// next functionalities
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+
+// hooks
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useProducts } from "@/hooks/useProducts";
 import { ReactQueryProvider } from "@/components/Provider/ReactQueryProvider";
-import { Product } from "@/types/product";
 
 export default function Home() {
+  // fetch data using react query
   const { data } = useProducts();
-  console.log(data);
 
   const [menuIsActive, setmenuIsActive] = useState(false);
   const pathname = usePathname();
 
+  // on reload menu is closed
   useEffect(() => {
     if (menuIsActive) setmenuIsActive(false);
   }, [pathname]);
 
+  // get-items from local storage
   const { value } = useLocalStorage("cart-items", []);
 
   return (
@@ -64,7 +73,7 @@ export default function Home() {
         />
       )}
 
-      <GridContainer>
+      <GridContainer $menuOpen={menuIsActive}>
         <ProductGrid>
           {data
             ? data?.products.map((product) => (

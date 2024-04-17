@@ -4,13 +4,19 @@ import {
   CheckoutInfos,
   CheckoutItems,
   CloseButton,
+  CloseMenuArea,
   Container,
+  ContentContainer,
   TotalDiv,
 } from "./styles";
-import Image from "next/image";
-import CloseCartIcon from "../../assets/CloseCartIcon.svg";
 import { CartItem } from "../CartItem";
+
+import Image from "next/image";
+
+import CloseCartIcon from "../../assets/CloseCartIcon.svg";
+
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+
 import { ProductInCart } from "@/types/product";
 
 interface CartSectionProps {
@@ -68,38 +74,42 @@ export const CartSection = ({ closeMenu }: CartSectionProps) => {
         initial="initial"
       >
         <Container>
-          <CheckoutInfos>
-            <div className="infos">
-              <h2>
-                Carrinho <br />
-                de compras
-              </h2>
-              <CloseButton onClick={closeMenu}>
-                <Image src={CloseCartIcon} alt="CloseCardIcon" />
-              </CloseButton>
-            </div>
-            <CheckoutItems>
-              {value.map((item) => (
-                <CartItem
-                  key={item.id}
-                  dataProduct={item}
-                  handleUptadeQuantity={handleUptadeQuantity}
-                  handleDelete={handleDelete}
-                />
-              ))}
-            </CheckoutItems>
-            <TotalDiv>
-              <h2>Total:</h2>
-              <h2>
-                {new Intl.NumberFormat("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                  minimumFractionDigits: 0,
-                }).format(cartTotal)}
-              </h2>
-            </TotalDiv>
-          </CheckoutInfos>
-          <CheckoutButton>Finalizar Compra</CheckoutButton>
+          <CloseMenuArea onClick={closeMenu} />
+
+          <ContentContainer>
+            <CheckoutInfos>
+              <div className="infos">
+                <h2>
+                  Carrinho <br />
+                  de compras
+                </h2>
+                <CloseButton onClick={closeMenu}>
+                  <Image src={CloseCartIcon} alt="CloseCardIcon" />
+                </CloseButton>
+              </div>
+              <CheckoutItems>
+                {value.map((item) => (
+                  <CartItem
+                    key={item.id}
+                    dataProduct={item}
+                    handleUptadeQuantity={handleUptadeQuantity}
+                    handleDelete={handleDelete}
+                  />
+                ))}
+              </CheckoutItems>
+              <TotalDiv>
+                <h2>Total:</h2>
+                <h2>
+                  {new Intl.NumberFormat("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                    minimumFractionDigits: 0,
+                  }).format(cartTotal)}
+                </h2>
+              </TotalDiv>
+            </CheckoutInfos>
+            <CheckoutButton>Finalizar Compra</CheckoutButton>
+          </ContentContainer>
         </Container>
       </motion.div>
     </AnimatePresence>

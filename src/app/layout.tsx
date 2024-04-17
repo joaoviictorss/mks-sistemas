@@ -12,7 +12,7 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: "Mks Sistemas",
-  description: "Teste de vaga front-end",
+  description: "E-commerce Mks Sistemas",
 };
 
 export default function RootLayout({
