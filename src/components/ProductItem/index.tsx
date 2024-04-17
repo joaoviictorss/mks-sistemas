@@ -4,7 +4,7 @@ import { ButtonBuyItem, Container, ProductInfos } from "./styles";
 import { Product } from "@/types/product";
 
 interface ProductItemProps {
-  data: Product;
+  data?: Product;
 }
 
 export function ProductItem({ data }: ProductItemProps) {
@@ -14,13 +14,13 @@ export function ProductItem({ data }: ProductItemProps) {
       let cartItemsArray = JSON.parse(cartItems);
 
       let existingProductIndex = cartItemsArray.findIndex(
-        (item: { id: number }) => item.id === data.id
+        (item: { id: number }) => item.id === data?.id
       );
 
       if (existingProductIndex != -1) {
         cartItemsArray[existingProductIndex].quantity += 1;
       } else {
-        cartItemsArray.push({ ...data, id: data.id, quantity: 1 });
+        cartItemsArray.push({ ...data, id: data?.id, quantity: 1 });
       }
 
       localStorage.setItem("cart-items", JSON.stringify(cartItemsArray));
@@ -28,7 +28,7 @@ export function ProductItem({ data }: ProductItemProps) {
       const newCart = [
         {
           ...data,
-          id: data.id,
+          id: data?.id,
           quantity: 1,
         },
       ];
@@ -39,18 +39,33 @@ export function ProductItem({ data }: ProductItemProps) {
   return (
     <Container>
       <ProductInfos>
-        <img src={data.photo} alt={data.name} />
-        <div>
-          <span>{data.name}</span>
-          <div className="price">
-            {new Intl.NumberFormat("pt-BR", {
-              style: "currency",
-              currency: "BRL",
-              minimumFractionDigits: 0,
-            }).format(data.price)}
-          </div>
-        </div>
-        <p>{data.description}</p>
+        {data ? (
+          <>
+            <img src={data.photo} alt={data.name} />
+            <div>
+              <span>{data.name}</span>
+              <div className="price">
+                {new Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                  minimumFractionDigits: 0,
+                }).format(data.price)}
+              </div>
+            </div>
+            <p>{data.description}</p>
+          </>
+        ) : (
+          <>
+            <div className="img-skeleton skeleton" />
+            <p className="skeleton-text skeleton"></p>
+            <p className="skeleton-text skeleton"></p>
+            <p className="skeleton-text skeleton"></p>
+            <p className="skeleton-text skeleton"></p>
+            <p className="skeleton-text skeleton"></p>
+            <p className="skeleton-text skeleton"></p>
+            <p className="skeleton-text skeleton"></p>
+          </>
+        )}
       </ProductInfos>
       <ButtonBuyItem onClick={handleAddToCart}>
         <Image src={ShoppingIcon} alt="ShoppingIcon" />

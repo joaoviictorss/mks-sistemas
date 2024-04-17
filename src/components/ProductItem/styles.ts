@@ -46,12 +46,12 @@ export const ProductInfos = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  gap: 0.75rem;
   align-items: center;
   padding: 1rem;
 
   img {
-    width: 7.5rem;
-    margin-bottom: 0.5rem;
+    width: 7.5rem;;
   }
 
   div {
@@ -77,7 +77,7 @@ export const ProductInfos = styled.div`
   p {
     font-size: 0.625rem;
     font-weight: 300;
-    margin-top: auto;
+
   }
 `;
 

@@ -9,7 +9,7 @@ export const CartContainer = styled.button`
   display: flex;
   align-items: center;
   gap: 1rem;
-
+ 
   p {
     font-weight: 700;
   }
