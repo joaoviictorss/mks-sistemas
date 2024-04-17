@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ShoppingIcon from "../../assets/shoppingIcon.svg";
-import { ButtonBuyItem, Container, ProductInfos } from "./styles";
+import { ButtonBuyItem, ContainerProduct, ProductInfos } from "./styles";
 import { Product } from "@/types/product";
 
 interface ProductItemProps {
@@ -37,10 +37,10 @@ export function ProductItem({ data }: ProductItemProps) {
   };
 
   return (
-    <Container>
-      <ProductInfos>
-        {data ? (
-          <>
+    <ContainerProduct>
+      {data ? (
+        <>
+          <ProductInfos>
             <img src={data.photo} alt={data.name} />
             <div>
               <span>{data.name}</span>
@@ -53,9 +53,15 @@ export function ProductItem({ data }: ProductItemProps) {
               </div>
             </div>
             <p>{data.description}</p>
-          </>
-        ) : (
-          <>
+          </ProductInfos>
+          <ButtonBuyItem onClick={handleAddToCart}>
+            <Image src={ShoppingIcon} alt="ShoppingIcon" />
+            Comprar
+          </ButtonBuyItem>
+        </>
+      ) : (
+        <>
+          <ProductInfos>
             <div className="img-skeleton skeleton" />
             <p className="skeleton-text skeleton"></p>
             <p className="skeleton-text skeleton"></p>
@@ -64,13 +70,10 @@ export function ProductItem({ data }: ProductItemProps) {
             <p className="skeleton-text skeleton"></p>
             <p className="skeleton-text skeleton"></p>
             <p className="skeleton-text skeleton"></p>
-          </>
-        )}
-      </ProductInfos>
-      <ButtonBuyItem onClick={handleAddToCart}>
-        <Image src={ShoppingIcon} alt="ShoppingIcon" />
-        Comprar
-      </ButtonBuyItem>
-    </Container>
+          </ProductInfos>
+          <ButtonBuyItem disabled className="skeleton" />
+        </>
+      )}
+    </ContainerProduct>
   );
 }

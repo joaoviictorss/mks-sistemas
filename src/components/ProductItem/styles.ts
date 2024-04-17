@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const ContainerProduct = styled.div`
   background-color: var(--background);
   display: flex;
   flex-direction: column;
@@ -48,7 +48,7 @@ export const ProductInfos = styled.div`
   flex-direction: column;
   gap: 0.75rem;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem ;
 
   img {
     width: 7.5rem;;
