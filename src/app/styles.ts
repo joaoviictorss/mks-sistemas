@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Header = styled.header`
   width: 100%;
   background-color: var(--blue);
+  position: fixed;
 `;
 export const Container = styled.div`
   height: 100px;
@@ -53,5 +54,20 @@ export const ProductGrid = styled.div`
 
   @media (max-width: 500px) {
     grid-template-columns: 1fr;
+  }
+`;
+
+export const CartContainer = styled.button`
+  border: none;
+  padding: 0.75rem 1rem;
+  background-color: white;
+  color: black;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+ 
+  p {
+    font-weight: 700;
   }
 `;

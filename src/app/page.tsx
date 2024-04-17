@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Footer } from "@/components/Footer";
 import {
   Container,
@@ -9,11 +10,16 @@ import {
   SecondNameLogo,
   GridContainer,
   ProductGrid,
+  CartContainer,
 } from "./styles";
-import { Cart } from "@/components/Cart";
-import { useEffect, useState } from "react";
 import { Product } from "@/types/product";
 import { ProductItem } from "@/components/ProductItem";
+import { CartSection } from "@/components/CartSection";
+
+import CartIcon from "../assets/CartIcon.svg";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 export default function Home() {
   const [dataRes, setDataRes] = useState<Product[]>();
@@ -34,6 +40,16 @@ export default function Home() {
         console.error("An error occourred: ", error);
       });
   }, []);
+
+  const [menuIsActive, setmenuIsActive] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (menuIsActive) setmenuIsActive(false);
+  }, [pathname]);
+
+  const { value } = useLocalStorage("cart-items", []);
+
   return (
     <>
       <Header>
@@ -42,9 +58,22 @@ export default function Home() {
             <FirstNameLogo>MKS</FirstNameLogo>
             <SecondNameLogo>Sistemas</SecondNameLogo>
           </Logo>
-          <Cart />
+
+          <CartContainer
+            onClick={() => {
+              setmenuIsActive(!menuIsActive);
+            }}
+          >
+            <Image src={CartIcon} alt="icon cart" />
+            <p>{value.length || 0}</p>
+          </CartContainer>
         </Container>
       </Header>
+
+      {menuIsActive && (
+        <CartSection closeMenu={() => {setmenuIsActive(!menuIsActive)}} />
+      )}
+
       <GridContainer>
         <ProductGrid>
           {dataRes
@@ -54,6 +83,7 @@ export default function Home() {
             : Array.from({ length: 8 }).map((_, i) => <ProductItem key={i} />)}
         </ProductGrid>
       </GridContainer>
+
       <Footer />
     </>
   );
