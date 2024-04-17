@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import './globals.css'
+import "./globals.css";
 
 import StyledComponentsRegistry from "./registry";
+import { ReactQueryProvider } from "@/components/Provider/ReactQueryProvider";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -22,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={montserrat.className} suppressHydrationWarning={true}>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <StyledComponentsRegistry>
+          <ReactQueryProvider>{children}</ReactQueryProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

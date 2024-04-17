@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Footer } from "@/components/Footer";
 import {
   Container,
@@ -12,7 +12,6 @@ import {
   ProductGrid,
   CartContainer,
 } from "./styles";
-import { Product } from "@/types/product";
 import { ProductItem } from "@/components/ProductItem";
 import { CartSection } from "@/components/CartSection";
 
@@ -20,26 +19,13 @@ import CartIcon from "../assets/CartIcon.svg";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { useProducts } from "@/hooks/useProducts";
+import { ReactQueryProvider } from "@/components/Provider/ReactQueryProvider";
+import { Product } from "@/types/product";
 
 export default function Home() {
-  const [dataRes, setDataRes] = useState<Product[]>();
-  useEffect(() => {
-    fetch(
-      "https://mks-frontend-challenge-04811e8151e6.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=ASC"
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok!");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setDataRes(data.products);
-      })
-      .catch((error) => {
-        console.error("An error occourred: ", error);
-      });
-  }, []);
+  const { data } = useProducts();
+  console.log(data);
 
   const [menuIsActive, setmenuIsActive] = useState(false);
   const pathname = usePathname();
@@ -51,7 +37,7 @@ export default function Home() {
   const { value } = useLocalStorage("cart-items", []);
 
   return (
-    <>
+    <ReactQueryProvider>
       <Header>
         <Container>
           <Logo>
@@ -80,8 +66,8 @@ export default function Home() {
 
       <GridContainer>
         <ProductGrid>
-          {dataRes
-            ? dataRes.map((product) => (
+          {data
+            ? data?.products.map((product) => (
                 <ProductItem data={product} key={product.id} />
               ))
             : Array.from({ length: 8 }).map((_, i) => <ProductItem key={i} />)}
@@ -89,6 +75,6 @@ export default function Home() {
       </GridContainer>
 
       <Footer />
-    </>
+    </ReactQueryProvider>
   );
 }
