@@ -1,6 +1,6 @@
 <h1 align='center'>MKS Sistemas</h1>
 
-<img alt="Project Image" title="#ProjectImage" src="./Home.png" >
+<img alt="Project Image" title="#ProjectImage" src="./public/Home.png" >
 
 <p>Aplicação para processo seletivo desenvolvedor Front-End.</p>
 
@@ -27,6 +27,10 @@ As seguintes ferramentas foram utilizadas neste projeto:
 - [Styled Components](https://styled-components.com/)
 - [React Query](https://tanstack.com/)
 - [Jest](https://jestjs.io/pt-BR/)
+
+ ## 🌐: Link do Projeto no Ar:
+
+- [Projeto](https://mks-sistemas-mu.vercel.app/)
 
 ## :closed_book: Requisitos ##
 
