@@ -4,13 +4,19 @@ export const Header = styled.header`
   width: 100%;
   background-color: var(--blue);
   position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
 `;
 export const Container = styled.div`
-  height:  100PX;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 3rem;
+  @media (max-width: 920px) {
+    height: 80px;
+  }
 `;
 
 export const Logo = styled.div`
@@ -31,12 +37,16 @@ export const SecondNameLogo = styled.span`
 `;
 
 export const GridContainer = styled.main`
-height: 70%;
+  height: calc(100% - 100px);
   margin: auto;
   max-width: 1000px;
-  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   @media (max-width: 920px) {
     padding: 2rem 0;
+    
   }
 `;
 
@@ -46,10 +56,13 @@ export const ProductGrid = styled.div`
   gap: 1.5rem;
 
   @media (max-width: 920px) {
+    margin-top: 100px;
     grid-template-columns: repeat(3, 1fr);
+    
   }
 
   @media (max-width: 780px) {
+    margin-top: 300px;
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -67,7 +80,7 @@ export const CartContainer = styled.button`
   display: flex;
   align-items: center;
   gap: 1rem;
- 
+
   p {
     font-weight: 700;
   }
