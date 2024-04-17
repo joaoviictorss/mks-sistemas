@@ -45,6 +45,7 @@ export default function Home() {
   // get-items from local storage
   const { value } = useLocalStorage("cart-items", []);
 
+
   return (
     <ReactQueryProvider>
       <Header>
