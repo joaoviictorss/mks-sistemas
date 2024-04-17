@@ -6,7 +6,7 @@ export const Header = styled.header`
   position: fixed;
 `;
 export const Container = styled.div`
-  height: 100px;
+  height:  100PX;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,6 +31,7 @@ export const SecondNameLogo = styled.span`
 `;
 
 export const GridContainer = styled.main`
+height: 70%;
   margin: auto;
   max-width: 1000px;
   align-self: center;

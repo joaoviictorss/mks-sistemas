@@ -70,12 +70,11 @@ export const CheckoutItems = styled.div`
   margin-top: 2rem;
   overflow: auto;
   padding: 1rem;
+
   &::-webkit-scrollbar {
-  width: 5px;
-  border-radius: 8px;
-}
-
-
-
-
+    width: 5px;
+    height: 0px;
+    border-radius: 8px;
+    background: gray;
+  }
 `;

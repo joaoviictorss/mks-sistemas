@@ -71,7 +71,11 @@ export default function Home() {
       </Header>
 
       {menuIsActive && (
-        <CartSection closeMenu={() => {setmenuIsActive(!menuIsActive)}} />
+        <CartSection
+          closeMenu={() => {
+            setmenuIsActive(!menuIsActive);
+          }}
+        />
       )}
 
       <GridContainer>
