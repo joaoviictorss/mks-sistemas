@@ -50,10 +50,10 @@ export const ItemInfos = styled.div`
 
 export const DeleteButton = styled.button`
   position: relative;
-  width: 1rem;
-  height: 1rem;
   left: 97%;
   bottom: 9px;
+  width: 1rem;
+  height: 1rem;
   border: none;
   border-radius: 50%;
   background-color: transparent;
@@ -61,6 +61,7 @@ export const DeleteButton = styled.button`
   .delete-button-img {
     width: 1rem;
     height: 1rem;
+  
   }
 
   @media (max-width: 580px) {
@@ -81,7 +82,7 @@ export const ProductInfos = styled.div`
   justify-content: space-between;
   width: 100%;
 
-  .prince-and-quantity{
+  .prince-and-quantity {
     display: flex;
     gap: 1rem;
     margin-right: 1rem;
@@ -96,7 +97,6 @@ export const ProductInfos = styled.div`
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      
     }
   }
 `;

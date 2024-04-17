@@ -14,18 +14,24 @@ import { useEffect, useState } from "react";
 interface CartItemProps {
   dataProduct: ProductInCart;
   handleUptadeQuantity(id: number, quantity: number): void;
+  handleDelete(id: number): void;
 }
 
-export function CartItem({ dataProduct, handleUptadeQuantity }: CartItemProps) {
+export function CartItem({
+  dataProduct,
+  handleUptadeQuantity,
+  handleDelete,
+}: CartItemProps) {
   const [productQuantity, setProductQuantity] = useState(dataProduct.quantity);
 
   useEffect(() => {
     handleUptadeQuantity(dataProduct.id, productQuantity);
+    productQuantity <= 0 && handleDelete(dataProduct.id);
   }, [productQuantity]);
 
   return (
     <Container>
-      <DeleteButton>
+      <DeleteButton onClick={() => handleDelete(dataProduct.id)}>
         <Image src={CloseCartIcon} alt={""} className="delete-button-img" />
       </DeleteButton>
       <ItemInfos>

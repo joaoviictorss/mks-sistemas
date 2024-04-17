@@ -37,6 +37,13 @@ export const CartSection = ({ closeMenu }: CartSectionProps) => {
     updateLocalStorage(newValue);
   }
 
+  function handleDelete(id: number) {
+    const newValue = value.filter((item) => {
+      if (item.id !== id) return item;
+    });
+    updateLocalStorage(newValue);
+  }
+
   // Animation
   const cartMenuSlide = {
     initial: {
@@ -72,15 +79,13 @@ export const CartSection = ({ closeMenu }: CartSectionProps) => {
               </CloseButton>
             </div>
             <CheckoutItems>
-              {value.map(
-                (item) =>
-                  item.quantity > 0 && (
-                    <CartItem
-                      dataProduct={item}
-                      handleUptadeQuantity={handleUptadeQuantity}
-                    />
-                  )
-              )}
+              {value.map((item) => (
+                <CartItem
+                  dataProduct={item}
+                  handleUptadeQuantity={handleUptadeQuantity}
+                  handleDelete={handleDelete}
+                />
+              ))}
             </CheckoutItems>
             <TotalDiv>
               <h2>Total:</h2>

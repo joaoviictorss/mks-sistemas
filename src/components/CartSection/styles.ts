@@ -40,8 +40,7 @@ export const CheckoutItems = styled.div`
   align-items: center;
   gap: 1rem;
   margin-top: 2rem;
-  overflow-y: auto;
-  
+
 `;
 
 export const CloseButton = styled.button`
