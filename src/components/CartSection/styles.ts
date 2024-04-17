@@ -22,6 +22,7 @@ export const CheckoutInfos = styled.div`
   display: block;
   display: flex;
   flex-direction: column;
+
   .infos {
     display: flex;
     justify-content: space-between;
@@ -32,15 +33,6 @@ export const CheckoutInfos = styled.div`
       line-height: 2rem;
     }
   }
-`;
-
-export const CheckoutItems = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 2rem;
-
 `;
 
 export const CloseButton = styled.button`
@@ -68,4 +60,22 @@ export const CheckoutButton = styled.div`
   height: 10%;
   align-self: flex-end;
   cursor: pointer;
+`;
+
+export const CheckoutItems = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  overflow: auto;
+  padding: 1rem;
+  &::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 8px;
+}
+
+
+
+
 `;

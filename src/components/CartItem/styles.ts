@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background-color: var(--background);
-  height: 6.25rem;
+  min-height: 6.25rem;
   width: 23.75rem;
   border-radius: 0.5rem;
   color: black;
@@ -10,7 +10,7 @@ export const Container = styled.div`
 
   @media (max-width: 580px) {
     width: 16rem;
-    height: 13.75rem;
+    min-height: 13.75rem;
     padding: 1rem;
     flex-direction: column;
     justify-content: center;
@@ -61,7 +61,6 @@ export const DeleteButton = styled.button`
   .delete-button-img {
     width: 1rem;
     height: 1rem;
-  
   }
 
   @media (max-width: 580px) {

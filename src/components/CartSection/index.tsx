@@ -81,6 +81,7 @@ export const CartSection = ({ closeMenu }: CartSectionProps) => {
             <CheckoutItems>
               {value.map((item) => (
                 <CartItem
+                  key={item.id}
                   dataProduct={item}
                   handleUptadeQuantity={handleUptadeQuantity}
                   handleDelete={handleDelete}
